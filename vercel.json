@@ -1,9 +1,8 @@
 {
-  "functions": {
-    "api/*.py": {
-      "runtime": "@vercel/python"
-    }
-  },
+  "builds": [
+    { "src": "api/*.py", "use": "@vercel/python" },
+    { "src": "public/**", "use": "@vercel/static" }
+  ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1.py" },
     { "src": "/(.*)", "dest": "/public/$1" }
