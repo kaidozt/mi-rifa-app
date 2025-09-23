@@ -3,35 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rifas Daniel & Yépez</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Rifas Online</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
+  <header>
+    <h1>🎉 Rifas Online</h1>
+    <p>Compra tu boleto y participa en nuestras rifas.</p>
+  </header>
+
+  <main>
     <div class="card">
-      <h1>🎉 Rifas Online</h1>
-      <p>Compra tu boleto y participa en nuestras rifas.</p>
+      <img src="rifa.jpg" alt="Rifa" class="rifa-img" />
 
-      <img src="rifa.jpg" alt="Rifa" class="rifa-img">
+      <form id="compraForm">
+        <div class="form-group">
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
+        </div>
 
-      <form id="purchaseForm">
-        <label for="name">Nombre completo</label>
-        <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required />
+        <div class="form-group">
+          <label for="metodo">Método de pago</label>
+          <select id="metodo" name="metodo" required>
+            <option value="">Selecciona un método</option>
+            <option value="paypal">PayPal</option>
+            <option value="tarjeta">Tarjeta de crédito</option>
+            <option value="nequi">Nequi</option>
+            <option value="daviplata">Daviplata</option>
+          </select>
+        </div>
 
-        <label for="payment">Método de pago</label>
-        <select id="payment" name="payment" required>
-          <option value="" disabled selected>Selecciona un método</option>
-          <option value="nequi">Nequi</option>
-          <option value="bancolombia">Bancolombia</option>
-          <option value="paypal">PayPal</option>
-        </select>
-
-        <button type="submit">Comprar boleto 🎟️</button>
+        <button type="submit" class="btn">💳 Comprar boleto</button>
       </form>
-
-      <div id="message"></div>
     </div>
-  </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Rifas Online - Todos los derechos reservados</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
