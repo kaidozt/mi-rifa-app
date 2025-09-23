@@ -1,19 +1,23 @@
-document.getElementById("compraForm").addEventListener("submit", async (e) => {
+document.getElementById("purchaseForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  const data = {
-    nombre: e.target.nombre.value,
-    email: e.target.email.value,
-    metodo_pago: e.target.metodo_pago.value,
-    cantidad: parseInt(e.target.cantidad.value)
-  };
+  const name = document.getElementById("name").value;
+  const payment = document.getElementById("payment").value;
 
-  const res = await fetch("/api/purchase", {
+  const response = await fetch("/api/purchase", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data)
+    body: JSON.stringify({ name, payment })
   });
 
-  const json = await res.json();
-  alert(json.mensaje || "Error en la compra");
+  const result = await response.json();
+
+  const messageDiv = document.getElementById("message");
+  if (result.success) {
+    messageDiv.textContent = "✅ Compra registrada. ¡Mucha suerte!";
+    messageDiv.style.color = "#28a745";
+  } else {
+    messageDiv.textContent = "❌ Error: " + (result.error || "No se pudo registrar");
+    messageDiv.style.color = "red";
+  }
 });

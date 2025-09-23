@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Rifa Online</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rifas Daniel & Yépez</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🎟️ Rifa Online</h1>
-  <img src="rifa.jpg" alt="Imagen de la rifa">
+  <div class="container">
+    <div class="card">
+      <h1>🎉 Rifas Online</h1>
+      <p>Compra tu boleto y participa en nuestras rifas.</p>
 
-  <form id="compraForm">
-    <input type="text" name="nombre" placeholder="Tu nombre" required>
-    <input type="email" name="email" placeholder="Tu email" required>
-    
-    <label>Método de pago:</label>
-    <select name="metodo_pago" required>
-      <option value="paypal">PayPal</option>
-      <option value="binance">Binance</option>
-      <option value="bancolombia">Bancolombia</option>
-    </select>
+      <img src="rifa.jpg" alt="Rifa" class="rifa-img">
 
-    <input type="number" name="cantidad" min="1" placeholder="Cantidad de boletos" required>
-    <button type="submit">Comprar</button>
-  </form>
+      <form id="purchaseForm">
+        <label for="name">Nombre completo</label>
+        <input type="text" id="name" name="name" placeholder="Ej: Juan Pérez" required />
+
+        <label for="payment">Método de pago</label>
+        <select id="payment" name="payment" required>
+          <option value="" disabled selected>Selecciona un método</option>
+          <option value="nequi">Nequi</option>
+          <option value="bancolombia">Bancolombia</option>
+          <option value="paypal">PayPal</option>
+        </select>
+
+        <button type="submit">Comprar boleto 🎟️</button>
+      </form>
+
+      <div id="message"></div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
