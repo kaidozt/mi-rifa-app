@@ -14,7 +14,7 @@
 
   <main>
     <div class="card">
-      <img src="rifa.jpg" alt="Rifa" class="rifa-img" />
+      <div class="rifa-img-container"></div>
 
       <form id="compraForm">
         <div class="form-group">
@@ -45,3 +45,13 @@
   <script src="script.js"></script>
 </body>
 </html>
+<script>
+  async function loadMainSettings() {
+    const res = await fetch('/api/settings');
+    const data = await res.json();
+    document.getElementById("raffleTitle").textContent = data.raffle_name;
+    document.getElementById("raffleImage").src = data.image_url;
+    document.getElementById("ticketPrice").textContent = "$" + data.ticket_price;
+  }
+  loadMainSettings();
+</script>
