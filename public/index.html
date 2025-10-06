@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rifas Online</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -13,45 +13,36 @@
   </header>
 
   <main>
-    <div class="card">
-      <div class="rifa-img-container"></div>
+    <section class="raffle-section">
+      <h2 id="raffle-name">Nombre de la Rifa</h2>
+      <div class="raffle-image">
+        <!-- Aquí se mostrará la imagen de la rifa -->
+        <img src="" alt="Imagen de la rifa" id="raffle-img" />
+      </div>
 
-      <form id="compraForm">
-        <div class="form-group">
-          <label for="nombre">Nombre completo</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
-        </div>
+      <p class="raffle-price">Precio del ticket: <span id="ticket-price">$--</span></p>
 
-        <div class="form-group">
-          <label for="metodo">Método de pago</label>
-          <select id="metodo" name="metodo" required>
-            <option value="">Selecciona un método</option>
-            <option value="paypal">PayPal</option>
-            <option value="tarjeta">Tarjeta de crédito</option>
-            <option value="nequi">Nequi</option>
-            <option value="daviplata">Daviplata</option>
-          </select>
-        </div>
-
-        <button type="submit" class="btn">💳 Comprar boleto</button>
+      <form id="buy-form">
+        <input type="text" placeholder="Nombre completo" required />
+        <select required>
+          <option value="">Método de pago</option>
+          <option value="transferencia">Transferencia</option>
+          <option value="efectivo">Efectivo</option>
+          <option value="zelle">Zelle</option>
+        </select>
+        <button type="submit">Comprar boleto</button>
       </form>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <p>© 2025 Rifas Online - Todos los derechos reservados</p>
+    <p id="footer-text">©2025 Rifas Online</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    document.getElementById('footer-text').addEventListener('click', () => {
+      window.location.href = 'admin.html';
+    });
+  </script>
 </body>
 </html>
-<script>
-  async function loadMainSettings() {
-    const res = await fetch('/api/settings');
-    const data = await res.json();
-    document.getElementById("raffleTitle").textContent = data.raffle_name;
-    document.getElementById("raffleImage").src = data.image_url;
-    document.getElementById("ticketPrice").textContent = "$" + data.ticket_price;
-  }
-  loadMainSettings();
-</script>

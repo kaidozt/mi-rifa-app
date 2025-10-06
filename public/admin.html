@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="admin-container">
+    <h1>Panel de Administración</h1>
+    <p>Introduce la contraseña para acceder:</p>
+    <input type="password" id="password" placeholder="Contraseña" />
+    <button id="login-btn">Entrar</button>
+
+    <div id="admin-panel" style="display:none;">
+      <h2>Configuración de la Rifa</h2>
+      <label>Nombre de la rifa:</label>
+      <input type="text" id="raffle-name-input" placeholder="Ej: Combo Moto" />
+      <label>Precio del ticket:</label>
+      <input type="text" id="ticket-price-input" placeholder="Ej: $5" />
+      <label>Imagen de la rifa:</label>
+      <input type="file" id="raffle-image-input" />
+
+      <button id="save-btn">Guardar cambios</button>
+      <p class="note">Los cambios se aplicarán en la página principal.</p>
+    </div>
+  </main>
+
+  <script>
+    const PASSWORD = "Santiago02*";
+    const loginBtn = document.getElementById("login-btn");
+    const panel = document.getElementById("admin-panel");
+
+    loginBtn.addEventListener("click", () => {
+      const input = document.getElementById("password").value;
+      if (input === PASSWORD) {
+        panel.style.display = "block";
+        loginBtn.style.display = "none";
+        document.getElementById("password").style.display = "none";
+      } else {
+        alert("Contraseña incorrecta");
+      }
+    });
+  </script>
+</body>
+</html>
